@@ -6,7 +6,7 @@
 
 ## Abstract
 
-Usability heuristic evaluation remains a manual, labor-intensive process requiring specialized UX expertise. While large language model (LLM) coding assistants have demonstrated capacity for UI analysis, their effectiveness is constrained by the absence of structured, platform-aware evaluation frameworks. We present a multi-platform usability heuristic evaluation framework that operationalizes Nielsen's 10 heuristics into machine-readable instruction files compatible with 11 AI coding tools (Claude Code, Cursor, GitHub Copilot, Windsurf, Aider, Continue, Codex CLI, Augment, PearAI, Cody, and OpenCode). The framework adapts each heuristic for four platform categories—web, mobile, desktop, and CLI—with platform-specific checklists, supplementary modules for data visualization and accessibility, a standardized 6-level severity scale, and a comparative mode for A/B evaluation. We evaluate the framework through two case studies: (1) a 23-page educational web platform (BINUS AI, Next.js 16) and (2) a 32-screen mobile fitness application (FitTrack, React Native). On the web case study, the framework identified 210 findings (54 Pass, 67 Minor, 38 Major, 51 Critical) in a single automated pass; all 51 Critical and 38 Major findings were resolved across four fix batches, leaving only 18 low-priority Minor items. On the mobile case study, the framework identified 174 findings (48 Pass, 52 Minor, 41 Major, 33 Critical) with all Critical and Major findings eliminated across three fix batches. Inter-tool consistency analysis across three AI coding tools (Claude Code, Cursor, GitHub Copilot) yielded Fleiss' kappa of 0.73, indicating substantial agreement. Results demonstrate that structured heuristic skill files enable LLM agents to produce professional-quality, actionable usability evaluations across platforms and tools with zero manual prompting beyond the initial request.
+Usability heuristic evaluation remains a manual, labor-intensive process requiring specialized UX expertise. While large language model (LLM) coding assistants have demonstrated capacity for UI analysis, their effectiveness is constrained by the absence of structured, platform-aware evaluation frameworks. We present a multi-platform usability heuristic evaluation framework that operationalizes Nielsen's 10 heuristics into machine-readable instruction files compatible with 11 AI coding tools (Claude Code, Cursor, GitHub Copilot, Windsurf, Aider, Continue, Codex CLI, Augment, PearAI, Cody, and OpenCode). The framework adapts each heuristic for four platform categories—web, mobile, desktop, and CLI—with platform-specific checklists, supplementary modules for data visualization and accessibility, a standardized 6-level severity scale, and a comparative mode for A/B evaluation. We evaluate the framework through a comprehensive real-world case study on BINUS AI, a 23-page educational platform built with Next.js 16. The framework identified 210 findings (54 Pass, 67 Minor, 38 Major, 51 Critical) in a single automated pass. After applying the framework's recommendations across four fix batches, all 51 Critical and 38 Major findings were resolved, with Pass ratings increasing from 54 to 157 and only 18 low-priority Minor items remaining. Results demonstrate that structured heuristic skill files enable LLM agents to produce professional-quality, actionable usability evaluations with zero manual prompting beyond the initial request.
 
 ---
 
@@ -44,7 +44,7 @@ This paper makes the following contributions:
 
 4. **Standardized severity scale:** A 6-level rating system (Critical, Major, Minor, Good, Needs Manual Review, N/A) with explicit assignment guidelines ensures consistent scoring across evaluators and tools.
 
-5. **Validation through real-world case study:** A comprehensive evaluation of a 23-page educational platform demonstrates the framework's ability to produce actionable findings and track improvement across four remediation batches.
+5. **Validation through real-world case study:** A comprehensive evaluation of a 23-page educational platform demonstrates the framework's ability to produce actionable findings and track improvement across four remediation batches, with all Critical and Major findings resolved.
 
 ### D. Paper Organization
 
@@ -78,7 +78,7 @@ To our knowledge, no prior work has addressed the gap between ad-hoc LLM prompti
 
 ### D. Inter-Rater Reliability in Heuristic Evaluation
 
-The reliability of heuristic evaluation has been a persistent concern in the HCI literature. Nielsen [2] reported that individual evaluators identify only 35% of usability problems, with five evaluators needed to reach 75% coverage. Hertzum and Jacobsen [16] conducted a meta-analysis of 11 studies and found a mean inter-rater agreement of κ = 0.57 across human evaluators using Nielsen's scale. More recently, Sauro and Lewis [15] reported κ = 0.65-0.80 for trained evaluators applying structured severity criteria. Our framework's inter-tool agreement of κ = 0.73 across three AI coding tools is consistent with the upper range of human evaluator agreement, suggesting that structured skill files can produce reliability comparable to trained human raters while eliminating individual evaluator variance.
+The reliability of heuristic evaluation has been a persistent concern in the HCI literature. Nielsen [2] reported that individual evaluators identify only 35% of usability problems, with five evaluators needed to reach 75% coverage. Hertzum and Jacobsen [15] conducted a meta-analysis of 11 studies and found a mean inter-rater agreement of κ = 0.57 across human evaluators using Nielsen's scale. More recently, Sauro and Lewis [14] reported κ = 0.65-0.80 for trained evaluators applying structured severity criteria. These findings motivate our framework's use of explicit checklists and severity guidelines to reduce evaluator variance.
 
 ---
 
@@ -371,67 +371,41 @@ After all four fix batches, the framework was re-run using the same evaluation p
 
 The most dramatic improvement occurred in H9 (Error Recovery), which went from 15 Critical and 0 Pass to 0 Critical and 21 Pass after the `safeFetch` wrapper eliminated silent error handling across all pages.
 
-### G. Inter-Tool Consistency
+### G. Improvement Trajectory Across Fix Batches
 
-To evaluate whether the framework produces consistent results across different AI coding tools, the same web platform evaluation (BINUS AI, 23 pages) was performed with three tools: **Claude Code**, **Cursor**, and **GitHub Copilot**. Each tool was loaded with the platform-appropriate instruction file (`web/SKILL.md`, `.cursorrules`, or `.github/copilot-instructions.md`) and given the identical prompt: "Run a usability heuristic evaluation on this application."
+The evaluation_log.md (provided in supplementary materials) tracks the framework's re-evaluation after each of the four fix batches, revealing a clear improvement trajectory:
 
-**Table III: Inter-Tool Finding Agreement**
+| Batch | Pass | Minor | Major | Critical | Cumulative Fixes |
+|-------|------|-------|-------|----------|-----------------|
+| Initial | 54 | 67 | 38 | 51 | — |
+| After Batch 1 (Critical & Safety) | 118 | 53 | 9 | 0 | 11 |
+| After Batches 2-3 (UI Consistency + Polish) | 148 | 27 | 5 | 0 | 28 |
+| After Batch 4 (Edge Cases) | 157 | 18 | 0 | 0 | 32 |
 
-| Metric | Claude Code | Cursor | GitHub Copilot |
-|--------|-------------|--------|----------------|
-| Total findings | 210 | 198 | 187 |
-| Critical identified | 51 | 47 | 44 |
-| Major identified | 38 | 36 | 33 |
-| Findings matching Claude Code (exact) | — | 162 (81.8%) | 143 (76.5%) |
-| Findings matching Claude Code (semantic) | — | 181 (91.4%) | 166 (88.8%) |
-| Top-10 overlap | — | 9/10 | 8/10 |
-| Evaluation time (minutes) | 7 | 9 | 11 |
+The most dramatic improvement occurred after Batch 1, which eliminated all 51 Critical findings through 11 targeted fixes centered on the `safeFetch` error handling wrapper, ARIA attributes, confirmation dialogs, and loading states. Subsequent batches progressively converted Major findings to Pass ratings.
 
-**Semantic agreement** was measured by having two independent reviewers judge whether a finding from Cursor or Copilot described the same underlying issue as Claude Code's finding, even if wording differed. The semantic agreement rates of 91.4% (Cursor) and 88.8% (Copilot) indicate that the framework produces substantially consistent findings regardless of the underlying tool.
+**Per-heuristic progression** shows that the final evaluation achieved 0 Critical and 0 Major across all 10 heuristics:
 
-The small variance in total findings (187-210) and critical findings (44-51) is attributable to differences in LLM output verbosity rather than heuristic coverage gaps. All three tools independently identified the same top-5 critical issues (API error silence, missing labels, tab ARIA, missing confirmation dialogs, unconditional redirect on delete).
+| Heuristic | Initial Critical | Final Critical | Initial Pass | Final Pass |
+|-----------|-----------------|----------------|--------------|------------|
+| H1 — Visibility of System Status | 1 | 0 | 10 | 21 |
+| H2 — Match System & Real World | 0 | 0 | 20 | 22 |
+| H3 — User Control & Freedom | 1 | 0 | 12 | 22 |
+| H4 — Consistency & Standards | 0 | 0 | 5 | 22 |
+| H5 — Error Prevention | 4 | 0 | 3 | 19 |
+| H6 — Recognition vs Recall | 0 | 0 | 18 | 22 |
+| H7 — Flexibility & Efficiency | 0 | 0 | 18 | 18 |
+| H8 — Aesthetic & Minimalist Design | 0 | 0 | 15 | 19 |
+| H9 — Error Recovery | 15 | 0 | 0 | 21 |
+| H10 — Help and Documentation | 2 | 0 | 5 | 17 |
 
-**Inter-rater reliability** using Fleiss' kappa for three raters (treating each tool as a rater across per-heuristic severity scores) yielded κ = 0.73 (95% CI: 0.61-0.85), indicating substantial agreement beyond chance. This is comparable to reported inter-rater agreement among human heuristic evaluators (κ = 0.65-0.80 in [15]).
+The most dramatic improvement occurred in H9 (Error Recovery), which went from 15 Critical and 0 Pass to 0 Critical and 21 Pass after the `safeFetch` wrapper eliminated silent error handling across all pages.
 
-### H. Cross-Case Comparative Analysis
-
-A second case study was conducted on a mobile fitness application (FitTrack, 32 screens, React Native) using the same framework protocol. A detailed report is provided in the companion document `draft2.md`. The comparison reveals both the consistency and platform-adaptivity of the framework.
-
-**Table IV: Cross-Case Comparison**
-
-| Metric | Web (BINUS AI) | Mobile (FitTrack) |
-|--------|----------------|-------------------|
-| Screens evaluated | 23 | 32 |
-| Lines of code reviewed | ~8,500 | ~18,500 |
-| Total findings | 210 | 174 |
-| Findings per screen | 9.1 | 5.4 |
-| Critical % | 24.3% | 18.9% |
-| Major % | 18.1% | 23.6% |
-| Minor % | 31.9% | 29.9% |
-| Pass % | 25.7% | 27.6% |
-| Worst heuristic | H9 (Error Recovery) | H9 (Error Recovery) |
-| Best heuristic | H2 (Real World Match) | H2 (Real World Match) |
-| Fix batches | 4 | 3 |
-| Total fixes | 32 | 25 |
-| Critical eliminated | 51 → 0 | 33 → 0 |
-| Major eliminated | 38 → 0 | 41 → 0 |
-| Evaluation time (min) | ~5-10 | ~8 |
-| Estimated manual time (hrs) | 4-8 | 6-10 |
-| Time reduction | 30-50× | 40-60× |
-
-**Key observations from cross-case analysis:**
-
-1. **Consistent prioritization:** Both evaluations independently ranked H9 (Error Recovery) as the worst heuristic and H2 (Real World Match) as the best, despite evaluating entirely different applications on different platforms with different codebases. This suggests the framework reliably identifies common usability anti-patterns in modern web and mobile applications.
-
-2. **Platform divergence:** While the top finding in both evaluations was "silent API error handling," the remaining critical findings diverged by platform. Web findings focused on DOM accessibility (missing `<label>` elements, ARIA roles), while mobile findings focused on platform conventions (haptic feedback, keyboard avoidance, offline handling, biometric confirmation). This confirms that the platform-adapted checklists successfully guide evaluation toward relevant concerns.
-
-3. **Findings density:** Web screens averaged 9.1 findings vs. 5.4 for mobile screens. This is attributable to web forms typically containing more interactive elements per page than mobile screens, which tend to be more focused on single tasks.
-
-### I. Time and Efficiency
+### H. Time and Efficiency
 
 The entire initial evaluation—covering 23 pages, 10 heuristics, and producing 210 findings with specific code references and fix recommendations—was completed in a single automated pass. The agent's output was structured, consistent, and immediately actionable. By comparison, a manual heuristic evaluation of a comparable application by a UX professional would typically require 4-8 hours. The framework completed the evaluation in approximately 5-10 minutes—a 30-50× reduction in evaluation time.
 
-### J. Actionability of Findings
+### I. Actionability of Findings
 
 A critical measure of evaluation quality is whether findings translate into concrete fixes. In this case study, every Critical and Major finding was accompanied by a specific, implementable fix recommendation. The top-10 issues included exact file paths, code patterns to replace, and recommended implementations (e.g., "One `safeFetch` wrapper in `security.ts` that auto-shows a toast/error on failure. Replace all raw `fetch` calls"). All 32 fixes derived from the framework's recommendations were implemented without ambiguity or reinterpretation.
 
@@ -457,15 +431,13 @@ A critical measure of evaluation quality is whether findings translate into conc
 
 **Not a full WCAG audit:** The accessibility module covers five high-impact checks aligned with WCAG 2.2 Level AA success criteria. It is not a substitute for a comprehensive accessibility audit, which would evaluate 50+ success criteria across four principles (Perceivable, Operable, Understandable, Robust).
 
-**Two case studies with consistent results:** The mobile case study (draft2.md) closely replicates the web evaluation pattern — H9 worst, H2 best, silent API errors as the top critical finding, and full elimination of Critical/Major issues after fixes. This consistency supports generalizability, though additional case studies across desktop and CLI platforms are needed.
-
-**Inter-tool agreement bounds:** The Fleiss' kappa of 0.73 across three tools falls within the "substantial agreement" range but below the 0.80 threshold considered "near-perfect." This is partially attributable to differences in LLM output structure (GitHub Copilot produces shorter, less detailed findings) rather than heuristic coverage.
+**Single application evaluation:** The case study covers one application (BINUS AI) on one platform (web). While the results are encouraging, additional case studies across mobile, desktop, and CLI platforms would strengthen generalizability. The framework's platform-adapted checklists are designed for this purpose but require empirical validation.
 
 ### C. Threats to Validity
 
 **Internal validity:** The LLM may hallucinate findings that do not correspond to actual usability issues. We mitigate this by requiring the framework to cite specific evidence (code patterns, UI elements by name) for each finding, allowing manual verification. In this case study, all cited findings were manually verified by the development team.
 
-**External validity:** The primary case study (BINUS AI) is an educational platform built with a specific tech stack (Next.js 16, shadcn/ui, Tailwind CSS). The replication case study (FitTrack, React Native) partially addresses this by using a different domain (fitness), framework (React Native), and platform (mobile). The consistent evaluation patterns across both studies support broader generalizability, though additional case studies in desktop and CLI environments are needed.
+**External validity:** The case study covers a single application (BINUS AI, an educational platform) built with a specific tech stack (Next.js 16, shadcn/ui, Tailwind CSS). Results may not generalize to applications using different frameworks, in different domains, or on different platforms. Validation across mobile, desktop, and CLI applications is needed.
 
 **Construct validity:** Severity ratings in any evaluation method are inherently subjective. We address this through the 6-level scale with explicit definitions and assignment guidelines, but inter-rater agreement studies would further validate the scale's reliability.
 
@@ -483,8 +455,6 @@ We have presented a multi-platform usability heuristic evaluation framework that
 4. **Standardized evaluation:** The 6-level severity scale, explicit evaluation guidelines, and comparative mode ensure consistent, reproducible results.
 
 Through a comprehensive case study on a 23-page educational platform, we demonstrated that the framework can identify 210 findings across 10 heuristics in a single automated pass, eliminate all 51 Critical and 38 Major issues through actionable recommendations, and reduce evaluation time from hours to minutes.
-
-**Inter-tool consistency (κ = 0.73) and cross-platform replication (mobile case study)** further validate that the framework produces reproducible, platform-aware results. Across two independent case studies (web + mobile), the same heuristics consistently ranked as worst (H9) and best (H2), while platform-specific findings diverged appropriately (ARIA for web vs. haptics/biometrics for mobile), confirming that the adaptation mechanism is functioning as designed.
 
 ### B. Future Work
 
@@ -545,5 +515,4 @@ We identify several directions for future research and development:
 - **Framework repository:** https://github.com/bagaswap111/usability-heuristics-skill
 - **Evaluation report (initial):** `/paper/evidence/evaluation.md` (387 lines)
 - **Evaluation log (all batches):** `/paper/evidence/evaluation_log.md` (310 lines)
-- **Mobile case study (FitTrack):** `/paper/draft2.md` (full case study)
 - **Reference library:** `/references/` (4 files, ~300 lines total)
