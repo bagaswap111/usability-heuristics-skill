@@ -1,22 +1,22 @@
 ---
 name: Feature Request
-about: Usulkan platform atau tool format baru
+about: Suggest a new platform or tool format
 title: '[Feature] '
 labels: enhancement
 assignees: ''
 ---
 
-**Platform / Tool Baru**
-Sebutkan platform atau AI coding tool yang ingin ditambahkan.
+**New Platform / Tool**
+State the platform or AI coding tool you want to add.
 
-**Format File**
-Jelaskan format config file yang dibutuhkan tool tersebut:
-- Nama file:
-- Lokasi di project:
-- Format khusus (frontmatter, YAML, dll):
+**File Format**
+Describe the config file format required by that tool:
+- File name:
+- Project location:
+- Special format (frontmatter, YAML, etc.):
 
-**Referensi**
-Link dokumentasi tool jika ada.
+**References**
+Link to the tool's documentation if any.
 
-**Checklist tambahan**
-Jika platform baru, sebutkan item checklist spesifik yang perlu ditambahkan.
+**Additional Checklist**
+If a new platform, specify checklist items that need to be added.

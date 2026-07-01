@@ -1,21 +1,21 @@
 ---
 name: Bug Report
-about: Laporkan issue pada checklist atau hasil evaluasi
+about: Report an issue with checklists or evaluation results
 title: '[Bug] '
 labels: bug
 assignees: ''
 ---
 
-**Deskripsi**
-Jelaskan issue yang ditemukan.
+**Description**
+Describe the issue you found.
 
-**Lokasi**
+**Location**
 - Platform: [web / mobile / desktop / cli]
-- Tool: [opencode / claude-code / cursor / dll]
+- Tool: [opencode / claude-code / cursor / etc.]
 - Heuristic: [H1–H10]
 
 **Screenshots**
-Jika ada, sertakan screenshot.
+If applicable, include screenshots.
 
 **Environment**
 - OS: [macOS / Windows / Linux]

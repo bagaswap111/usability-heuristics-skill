@@ -1,6 +1,6 @@
-## Deskripsi
+## Description
 
-Jelaskan perubahan yang dilakukan.
+Describe the changes made.
 
 ## Platform
 - [ ] Web
@@ -20,9 +20,9 @@ Jelaskan perubahan yang dilakukan.
 - [ ] Augment
 - [ ] PearAI
 - [ ] Cody
-- [ ] Lainnya: ...
+- [ ] Other: ...
 
 ## Checklist
-- [ ] File mengikuti format yang benar untuk tool target
-- [ ] Konten checklist sesuai dengan platform target
-- [ ] Tidak ada duplikasi dengan file existing
+- [ ] File follows the correct format for the target tool
+- [ ] Checklist content matches the target platform
+- [ ] No duplication with existing files

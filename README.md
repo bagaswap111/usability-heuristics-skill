@@ -1,6 +1,6 @@
 # Usability Heuristics Evaluation Skill
 
-Evaluasi UI/UX berbasis [10 Heuristics Nielsen](https://www.nngroup.com/articles/ten-usability-heuristics/) — tersedia untuk **4 platform** dalam **11 format AI coding tools**.
+UI/UX evaluation based on [Nielsen's 10 Heuristics](https://www.nngroup.com/articles/ten-usability-heuristics/) — available for **4 platforms** in **11 AI coding tool formats**.
 
 ## Platform
 
@@ -13,7 +13,7 @@ Evaluasi UI/UX berbasis [10 Heuristics Nielsen](https://www.nngroup.com/articles
 
 ## Tool Format
 
-Setiap platform punya varian untuk tiap tool AI:
+Each platform has a variant for every AI tool:
 
 | Tool | File | Folder |
 |------|------|--------|
@@ -29,14 +29,14 @@ Setiap platform punya varian untuk tiap tool AI:
 | PearAI | `.pearai/instructions.md` | `tools/pearai/{platform}/` |
 | Cody | `.cody/instructions.md` | `tools/cody/{platform}/` |
 
-## Cara Pakai
+## Usage
 
-1. Pilih **platform** yang sesuai (web/mobile/desktop/cli)
-2. Pilih **tool** yang kamu pakai
-3. Copy file dari folder `tools/{tool}/{platform}/` ke root project kamu
-4. Agent AI akan otomatis membaca aturan evaluasi usability
+1. Choose the **platform** (web/mobile/desktop/cli)
+2. Choose your **tool**
+3. Copy the file from `tools/{tool}/{platform}/` to your project root
+4. The AI agent will automatically read the usability evaluation rules
 
-Contoh — pakai Claude Code untuk evaluasi web app:
+Example — using Claude Code for a web app evaluation:
 
 ```bash
 cp tools/claude-code/web/CLAUDE.md /path/to/project/CLAUDE.md
@@ -44,23 +44,23 @@ cp tools/claude-code/web/CLAUDE.md /path/to/project/CLAUDE.md
 
 ## 10 Heuristics
 
-| # | Heuristic | Fokus |
+| # | Heuristic | Focus |
 |---|-----------|-------|
-| H1 | Visibility of System Status | Loading, feedback, notifikasi |
-| H2 | Match System & Real World | Bahasa user, ikon familiar |
+| H1 | Visibility of System Status | Loading, feedback, notifications |
+| H2 | Match System & Real World | User language, familiar icons |
 | H3 | User Control & Freedom | Undo, cancel, back |
-| H4 | Consistency & Standards | UI konsisten, ikuti platform |
-| H5 | Error Prevention | Validasi, konfirmasi, auto-save |
-| H6 | Recognition vs Recall | Navigasi visible, search, history |
-| H7 | Flexibility & Efficiency | Shortcut, bulk action, filter |
-| H8 | Aesthetic & Minimalist | No clutter, whitespace, hierarki |
-| H9 | Error Recovery | Pesan jelas, saran perbaikan |
-| H10 | Help & Documentation | Empty state, tooltip, onboarding |
+| H4 | Consistency & Standards | Consistent UI, platform conventions |
+| H5 | Error Prevention | Validation, confirmation, auto-save |
+| H6 | Recognition vs Recall | Visible navigation, search, history |
+| H7 | Flexibility & Efficiency | Shortcuts, bulk actions, filters |
+| H8 | Aesthetic & Minimalist | No clutter, whitespace, hierarchy |
+| H9 | Error Recovery | Clear messages, fix suggestions |
+| H10 | Help & Documentation | Empty states, tooltips, onboarding |
 
 ## Scoring
 
-| Score | Arti |
-|-------|------|
+| Score | Meaning |
+|-------|---------|
 | ✅ Pass | No issues |
 | ⚠️ Minor | Non-critical, low impact |
 | 🔴 Major | Significant barrier |
