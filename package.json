@@ -1,0 +1,12 @@
+{
+  "name": "usability-heuristics",
+  "version": "1.0.0",
+  "description": "UI/UX evaluation based on [Nielsen's 10 Heuristics](https://www.nngroup.com/articles/ten-usability-heuristics/) — available for **4 platforms** in **11 AI coding tool formats**.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,48 @@
+graph LR
+    subgraph Core["Core Module"]
+        H1[H1 Status Visibility]
+        H2[H2 Real World Match]
+        H3[H3 User Control]
+        H4[H4 Consistency]
+        H5[H5 Error Prevention]
+        H6[H6 Recognition vs Recall]
+        H7[H7 Flexibility]
+        H8[H8 Minimalist Design]
+        H9[H9 Error Recovery]
+        H10[H10 Help & Docs]
+    end
+
+    subgraph DV["Data Visualization Module"]
+        DV1[DV-1 Control Ordering]
+        DV2[DV-2 Interdependent Controls]
+        DV3[DV-3 Chart Type Match]
+        DV4[DV-4 Data Density]
+        DV5[DV-5 Filter Distinction]
+        DV6[DV-6 Empty & Edge States]
+    end
+
+    subgraph A11Y["Accessibility Module"]
+        A1[A11Y-1 Color Contrast]
+        A2[A11Y-2 Text & Target Sizing]
+        A3[A11Y-3 Keyboard Navigation]
+        A4[A11Y-4 Labels]
+        A5[A11Y-5 State Communication]
+    end
+
+    subgraph Scale["Shared Severity Scale"]
+        S1[❌ Critical]
+        S2[🔴 Major]
+        S3[⚠️ Minor]
+        S4[✅ Good]
+        S5[👁️ Manual Review]
+        S6[— N/A]
+    end
+
+    Core --> Scale
+    DV --> Scale
+    A11Y --> Scale
+
+    style DV fill:#fff3e0,stroke:#f57c00
+    style A11Y fill:#e8f5e9,stroke:#388e3c
+    style Core fill:#e1f5fe,stroke:#0288d1
+    style Scale fill:#f3e5f5,stroke:#7b1fa2

@@ -1,0 +1,38 @@
+graph LR
+    subgraph Source["Canonical Source"]
+        SKILL["{platform}/SKILL.md<br/>(4 platforms × 260 lines)"]
+        REF["references/<br/>(4 files × 300 lines)"]
+    end
+
+    subgraph Tools["11 Tool Formats"]
+        OC[OpenCode<br/>SKILL.md]
+        CC[Claude Code<br/>CLAUDE.md]
+        CR[Cursor<br/>.cursorrules]
+        WS[Windsurf<br/>.windsurfrules]
+        GC[GitHub Copilot<br/>copilot-instructions.md<br/>+ YAML frontmatter]
+        AD[Aider<br/>CONVENTIONS.md]
+        CT[Continue<br/>.continuerc.md]
+        CX[Codex CLI<br/>CODEX.md]
+        AG[Augment<br/>AUGMENT.md]
+        PR[PearAI<br/>instructions.md]
+        CY[Cody<br/>instructions.md]
+    end
+
+    SKILL --> OC
+    SKILL --> CC
+    SKILL --> CR
+    SKILL --> WS
+    SKILL --> GC
+    SKILL --> AD
+    SKILL --> CT
+    SKILL --> CX
+    SKILL --> AG
+    SKILL --> PR
+    SKILL --> CY
+
+    style Source fill:#e1f5fe,stroke:#0288d1
+    style SKILL fill:#e1f5fe,stroke:#0288d1
+    style REF fill:#e1f5fe,stroke:#0288d1
+    style OC fill:#f3e5f5,stroke:#7b1fa2
+    style CC fill:#f3e5f5,stroke:#7b1fa2
+    style GC fill:#fff3e0,stroke:#f57c00

@@ -1,0 +1,41 @@
+flowchart TD
+    TITLE["H1 — Visibility of System Status<br/>Across 4 Platforms"]
+
+    subgraph Web["Web"]
+        W1[Browser title reflects page]
+        W2[Loading spinner/skeleton]
+        W3[Breadcrumb navigation]
+        W4[HTTP loading indicators]
+    end
+
+    subgraph Mobile["Mobile"]
+        M1[Pull-to-refresh feedback]
+        M2[Push notifications]
+        M3[Tab bar active highlight]
+        M4[Snackbar/toast for actions]
+    end
+
+    subgraph Desktop["Desktop"]
+        D1[Window title updates]
+        D2[Status bar progress]
+        D3[System tray notifications]
+        D4[Save indicator • dot]
+    end
+
+    subgraph CLI["CLI"]
+        C1[Exit codes: 0/1/2]
+        C2[Spinner/progress bar]
+        C3[Verbose flag for detail]
+        C4[Success/error messages]
+    end
+
+    TITLE --> Web
+    TITLE --> Mobile
+    TITLE --> Desktop
+    TITLE --> CLI
+
+    style Web fill:#e1f5fe,stroke:#0288d1
+    style Mobile fill:#fff3e0,stroke:#f57c00
+    style Desktop fill:#e8f5e9,stroke:#388e3c
+    style CLI fill:#fce4ec,stroke:#c62828
+    style TITLE fill:#f3e5f5,stroke:#7b1fa2

@@ -104,7 +104,9 @@ For each of the 10 heuristics, adaptation considers:
 4. **State persistence:** Mobile and desktop support background/foreground transitions; web depends on tab lifecycle; CLI is session-scoped.
 5. **Error handling:** Web shows HTTP error pages; mobile shows offline banners; desktop shows crash dialogs; CLI writes error messages to stderr with appropriate exit codes.
 
-The complete platform-adapted checklists for all 10 heuristics are provided in the supplementary reference library (`references/nielsen-10-heuristics.md`).
+The complete platform-adapted checklists for all 10 heuristics are provided in the supplementary reference library (`references/nielsen-10-heuristics.md`). Fig. 4 illustrates the platform-specific adaptation for H1 (Visibility of System Status) as an example.
+
+![Fig. 4: H1 Visibility of System Status across four platforms](figures/fig4-h1-platform.png)
 
 ### B. Supplementary Module System
 
@@ -114,7 +116,9 @@ Beyond the core 10 heuristics, the framework supports auto-detected supplementar
 
 **Accessibility Module (A11Y-1 to A11Y-5):** Always active by default at WCAG Level AA, escalating to AAA when the product targets the general public, healthcare, government, or users with disabilities. The module covers: color contrast (4.5:1 body text, 3:1 large text), text and target sizing (24×24px AA, 44×44px AAA), keyboard navigation (visible focus, logical tab order, no traps), labels and descriptions (visible labels, alt text, accessible names), and state communication (aria-selected, aria-expanded, aria-live).
 
-Module activation is determined before evaluation begins by scanning the provided input for trigger patterns (e.g., "chart," "KPI," "dashboard" in the codebase or screenshot description).
+Module activation is determined before evaluation begins by scanning the provided input for trigger patterns (e.g., "chart," "KPI," "dashboard" in the codebase or screenshot description). Fig. 2 shows the interaction between the core and supplementary modules.
+
+![Fig. 2: Module interaction architecture](figures/fig2-modules.png)
 
 ### C. Severity Scale
 
@@ -171,6 +175,10 @@ Input ──► Input Detection Layer ──► Module Activator ──► Evalu
 
 **Evaluation Engine:** Applies all active modules against the provided input using platform-specific checklists from the reference library. Each finding receives a severity rating using the 6-level scale. The engine follows the embedded evaluation guidelines to ensure consistency.
 
+Fig. 1 presents the complete system architecture.
+
+![Fig. 1: System architecture](figures/fig1-architecture.png)
+
 ### B. Tool Format Mapping
 
 A key architectural contribution is the automatic mapping of a single canonical skill file to 11 AI coding tool instruction formats:
@@ -189,7 +197,11 @@ A key architectural contribution is the automatic mapping of a single canonical 
 | PearAI | `instructions.md` | `.pearai/` | None |
 | Cody | `instructions.md` | `.cody/` | None |
 
-The mapping is a direct copy for most tools (all use markdown-based instruction files). GitHub Copilot requires an additional YAML frontmatter header with a `scope:` field that constrains which files the instructions apply to. The open-source repository at [github.com/bagaswap111/usability-heuristics-skill](https://github.com/bagaswap111/usability-heuristics-skill) provides 44 pre-generated files (11 tools × 4 platforms).
+The mapping is a direct copy for most tools (all use markdown-based instruction files). GitHub Copilot requires an additional YAML frontmatter header with a `scope:` field that constrains which files the instructions apply to. Fig. 3 illustrates the mapping from the canonical source to all 11 tool formats.
+
+![Fig. 3: Tool format mapping from canonical SKILL.md to 11 tool formats](figures/fig3-tool-mapping.png)
+
+The open-source repository at [github.com/bagaswap111/usability-heuristics-skill](https://github.com/bagaswap111/usability-heuristics-skill) provides 44 pre-generated files (11 tools × 4 platforms).
 
 ### C. Reference Library
 

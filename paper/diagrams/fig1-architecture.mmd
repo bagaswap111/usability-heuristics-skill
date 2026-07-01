@@ -1,0 +1,48 @@
+graph TB
+    subgraph Input["Input Layer"]
+        A1[Screenshot]
+        A2[Code File]
+        A3[Figma URL]
+        A4[Text Description]
+    end
+
+    B[Input Detection Layer]
+
+    subgraph Modules["Module Activator"]
+        C1[Core: Nielsen 10<br/>Always Active]
+        C2[Data Visualization<br/>Conditional: charts, KPIs]
+        C3[Accessibility<br/>Always Active - WCAG AA]
+    end
+
+    subgraph Engine["Evaluation Engine"]
+        D1[Platform-Specific<br/>Checklists]
+        D2[Evaluation<br/>Guidelines]
+        D3[Severity Scale<br/>6 Levels]
+    end
+
+    subgraph Output["Output"]
+        E1["Report File (ux-eval-name.md)"]
+        E2["Inline Summary (Ratings + Priorities)"]
+        E3["Comparative Mode (A/B Table)"]
+    end
+
+    A1 --> B
+    A2 --> B
+    A3 --> B
+    A4 --> B
+    B --> C1
+    B --> C2
+    B --> C3
+    C1 --> D1
+    C2 --> D1
+    C3 --> D1
+    D1 --> D2
+    D2 --> D3
+    D3 --> E1
+    D3 --> E2
+    D3 --> E3
+
+    style C1 fill:#e1f5fe,stroke:#0288d1
+    style C2 fill:#fff3e0,stroke:#f57c00
+    style C3 fill:#e8f5e9,stroke:#388e3c
+    style B fill:#f3e5f5,stroke:#7b1fa2
