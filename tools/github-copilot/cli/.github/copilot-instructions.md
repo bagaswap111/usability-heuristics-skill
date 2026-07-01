@@ -1,7 +1,6 @@
 ---
 scope: '**/*.{sh,py,rs,go,zig,js}'
 ---
-
 # Skill: usability-heuristics-cli
 
 # Usability Heuristics Evaluation — CLI / TUI
@@ -203,3 +202,79 @@ Scoring: ✅ Pass | ⚠️ Minor | 🔴 Major | ❌ Critical
 
 ## Recommendations by Heuristic
 ```
+
+---
+
+## Input Detection
+
+Automatically detect what the user has provided:
+
+| Provided | How to use |
+|---|---|
+| Screenshot / image of terminal | Analyze output formatting, layout, color usage, information hierarchy |
+| Code file (Python, Go, Rust, Shell, etc.) | Read code to understand argument parsing, output handling, error handling, interaction flow |
+| Both code + screenshot | Use both — code is primary for interaction analysis, screenshot for visual judgment of output |
+| Text-only description | Do NOT produce a formal report. Give brief informal suggestions and request a screenshot or code file. |
+| None of the above | Ask: "Can you provide a screenshot of the terminal output, or point me to the relevant code file?" |
+
+If only one type is provided and the other would significantly improve the evaluation, note it at the end of the report — not at the beginning.
+
+---
+
+## Module Auto-Detection
+
+Before running the evaluation, scan the input for domain-specific patterns and enable relevant modules:
+
+| Module | Auto-detect when | Reference file |
+|---|---|---|
+| Data Visualization | ASCII tables, progress bars, sparklines, gauges, or any formatted data output in terminal | [references/data-viz-heuristics.md](references/data-viz-heuristics.md) |
+| Accessibility | **ALWAYS enabled** for every evaluation. Focus on terminal-specific accessibility: color-only indicators, screen reader compatibility, output parsability. | [references/accessibility-heuristics.md](references/accessibility-heuristics.md) |
+
+Multiple modules can be active simultaneously. State which modules are active at the top of the report.
+
+---
+
+## Evaluation Guidelines
+
+- **Be specific**: reference exact flags, arguments, output lines, or error messages by name — not generic statements.
+- **Cite evidence**: "`--force` flag has no confirmation prompt" is better than "Error prevention could be improved."
+- **Acknowledge strengths**: if a heuristic is well-handled, mark it as `Good` with a brief note on what works. Do not manufacture problems.
+- **Respect incompleteness**: TODO commands, stub help sections, and placeholder output are not design flaws. Note them in the finding text and rate based on actual user impact.
+- **Screenshot artifacts are not findings**: Transient states in a terminal (interactive prompts, progress animations) are not permanent output problems.
+- **Use Needs Manual Review honestly**: When you cannot observe or verify a behavior from the provided input, rate it `Needs Manual Review`. Do not assign a severity to something you haven't confirmed.
+- **Internal consistency first**: for H4 (Consistency and Standards), always evaluate internal consistency within the tool first. Only evaluate external consistency (POSIX/GNU conventions) if context was provided.
+- **Reference the detailed checklists** in `references/nielsen-10-heuristics.md` for per-heuristic platform-specific guidance.
+
+---
+
+## Rating Scale
+
+Use the full 6-level scale from [references/severity-scale.md](references/severity-scale.md):
+
+| Rating | Label | Definition | Action |
+|---|---|---|---|
+| ❌ | **Critical** | Prevents task completion or causes serious data misunderstanding | Must fix before release |
+| 🔴 | **Major** | Significant friction or confusion; users can work around but will struggle | Should fix — high priority |
+| ⚠️ | **Minor** | Noticeable annoyance but users can complete their task | Fix when possible |
+| ✅ | **Good** | Heuristic is well-handled; note what works | No action needed |
+| 👁️ | **Needs Manual Review** | Cannot verify from provided input | Verify in live product |
+| — | **N/A** | Heuristic does not apply to this UI | No action needed |
+
+When `Rating = N/A` or `Rating = Needs Manual Review`, there is no scored severity.
+
+---
+
+## Comparative Mode
+
+Triggered when the user provides two versions (e.g., two screenshots, before/after code, old vs new CLI output).
+
+1. Run the standard evaluation on **both** versions
+2. Produce a comparison table:
+
+| Heuristic | Version A | Version B | Delta |
+|---|---|---|---|
+| H1 Visibility of System Status | Minor | Good | Improved |
+| ... | ... | ... | ... |
+
+3. Highlight **regressions** (worse in B) and **improvements** (better in B)
+4. Executive summary focuses on **what changed**, not a full re-evaluation of both versions

@@ -37,26 +37,32 @@ Already in skill format — load by name:
 
 ```bash
 # The skill is auto-discovered when placed under .agents/skills/
-# Load it in your opencode.json or via the skill command:
 skill load usability-heuristics
 ```
 
-Copy: `cp web/SKILL.md /project/.opencode/skills/usability-heuristics/SKILL.md`
+Copy entire skill directory (includes `references/` for supplementary modules):
+
+```bash
+cp -r . /project/.opencode/skills/usability-heuristics/
+```
 
 ---
 
 ### Claude Code
 
-Place `CLAUDE.md` at your project root:
+Place `CLAUDE.md` at your project root, and optionally copy `references/` for supplementary module support:
 
 ```bash
 cp tools/claude-code/web/CLAUDE.md /project/CLAUDE.md
+cp -r references/ /project/references/   # optional, enables Data Viz + Accessibility modules
 ```
 
 Claude Code reads `CLAUDE.md` automatically — no config needed. Supported locations (highest priority first):
 1. `{project}/CLAUDE.md`
 2. `{project}/.claude/CLAUDE.md`
 3. `~/CLAUDE.md` (global, all projects)
+
+The `references/` folder is optional but recommended — it enables the supplementary Data Visualization and Accessibility modules.
 
 ---
 
@@ -170,6 +176,30 @@ cp "tools/cody/web/.cody/instructions.md" "/project/.cody/instructions.md"
 
 Cody reads `.cody/instructions.md` automatically. Also supported: `.cody/instructions/` directory for multiple files.
 
+## Features
+
+| Feature | Description |
+|---------|-------------|
+| **4 Platforms** | Web, Mobile, Desktop, CLI — platform-specific checklists |
+| **11 Tool Formats** | OpenCode, Claude Code, Cursor, Windsurf, GitHub Copilot, Aider, Continue, Codex CLI, Augment, PearAI, Cody |
+| **Input Detection** | Auto-detects screenshot, code, Figma URL, or text description |
+| **Supplementary Modules** | Data Visualization + Accessibility modules, auto-enabled when relevant |
+| **Evaluation Guidelines** | Detailed rules for consistent, evidence-based findings |
+| **6-Level Rating Scale** | Critical / Major / Minor / Good / Needs Manual Review / N/A |
+| **Comparative Mode** | Side-by-side A/B evaluation |
+| **Reference Library** | Detailed checklists with platform-specific notes in `references/` |
+
+## References
+
+Detailed reference files in `references/` provide deeper checklists with per-platform guidance. These are automatically referenced by the SKILL.md files during evaluation:
+
+| File | Contents |
+|------|----------|
+| `references/nielsen-10-heuristics.md` | Detailed per-heuristic checklists with platform notes for Web, Mobile, Desktop, CLI |
+| `references/data-viz-heuristics.md` | Data visualization module (DV-1 through DV-6) for charts, dashboards, KPIs |
+| `references/accessibility-heuristics.md` | Accessibility module (A11Y-1 through A11Y-5) — always active, WCAG AA default |
+| `references/severity-scale.md` | Full 6-level severity scale with assignment guidelines |
+
 ## 10 Heuristics
 
 | # | Heuristic | Focus |
@@ -187,9 +217,11 @@ Cody reads `.cody/instructions.md` automatically. Also supported: `.cody/instruc
 
 ## Scoring
 
-| Score | Meaning |
-|-------|---------|
-| ✅ Pass | No issues |
-| ⚠️ Minor | Non-critical, low impact |
-| 🔴 Major | Significant barrier |
-| ❌ Critical | Blocks task completion |
+| Score | Meaning | Action |
+|-------|---------|--------|
+| ❌ Critical | Prevents task completion or causes serious data misunderstanding | Must fix before release |
+| 🔴 Major | Significant friction or confusion | Should fix — high priority |
+| ⚠️ Minor | Noticeable annoyance but users can complete task | Fix when possible |
+| ✅ Good | Heuristic is well-handled | No action needed |
+| 👁️ Manual Review | Cannot verify from provided input | Verify in live product |
+| — N/A | Heuristic does not apply | No action needed |
