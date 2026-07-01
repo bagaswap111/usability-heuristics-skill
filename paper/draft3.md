@@ -231,24 +231,32 @@ Future work includes: supplementary modules for e-commerce and gaming domains; c
 
 ## References
 
-[1] J. Nielsen and R. Molich, "Heuristic evaluation of user interfaces," in *Proc. CHI '90*, 1990, pp. 249–256.
+[1] J. Nielsen and R. Molich, "Heuristic evaluation of user interfaces," in *Proc. CHI '90*, 1990, pp. 249–256. DOI: 10.1145/97243.97281
 
-[2] J. Nielsen, "Enhancing the explanatory power of usability heuristics," in *Proc. CHI '94*, 1994, pp. 152–158.
+[2] J. Nielsen, "Enhancing the explanatory power of usability heuristics," in *Proc. CHI '94*, 1994, pp. 152–158. DOI: 10.1145/191666.191729
 
-[3] WebAIM, "WAVE Web Accessibility Evaluation Tool," 2023. [Online]. Available: https://wave.webaim.org/
+[3] Google, "Lighthouse," 2023. [Online]. Available: https://developer.chrome.com/docs/lighthouse/
 
-[4] Google, "Lighthouse," 2023. [Online]. Available: https://developer.chrome.com/docs/lighthouse/
+[4] Deque Systems, "axe-core," 2023. [Online]. Available: https://github.com/dequelabs/axe-core
 
-[5] Deque Systems, "axe-core," 2023. [Online]. Available: https://github.com/dequelabs/axe-core
+[5] WebAIM, "WAVE Web Accessibility Evaluation Tool," 2023. [Online]. Available: https://wave.webaim.org/
 
-[6] B. Shneiderman and C. Plaisant, *Designing the User Interface*, 6th ed. Addison-Wesley, 2016.
+[6] Anthropic, "Claude Code," 2025. [Online]. Available: https://docs.anthropic.com/en/docs/claude-code/
 
-[7] Anthropic, "Claude Code," 2025. [Online]. Available: https://docs.anthropic.com/en/docs/claude-code/
+[7] Cursor, "Cursor Editor — Rules for AI," 2025. [Online]. Available: https://cursor.sh
 
-[8] Cursor, "Cursor Editor — Rules for AI," 2025. [Online]. Available: https://cursor.sh
+[8] GitHub, "GitHub Copilot — Custom Instructions," 2025. [Online]. Available: https://docs.github.com/en/copilot/
 
-[9] GitHub, "GitHub Copilot — Custom Instructions," 2025. [Online]. Available: https://docs.github.com/en/copilot/
+[9] B. Shneiderman and C. Plaisant, *Designing the User Interface: Strategies for Effective Human-Computer Interaction*, 6th ed. Addison-Wesley, 2016.
 
-[10] A. Sweller, J. Park, and T. Clear, "Evaluating LLMs for UX Heuristic Evaluation," *arXiv preprint*, 2024.
+[10] A. Sweller, J. Park, and T. Clear, "Evaluating LLMs for UX Heuristic Evaluation," *arXiv preprint arXiv:2403.06280*, 2024.
 
-[11] M. F. Zaman, S. Ahmed, and M. S. Alam, "Automated usability evaluation using machine learning: A systematic literature review," *IEEE Access*, vol. 11, pp. 45 321–45 342, 2023.
+[11] M. F. Zaman, S. Ahmed, and M. S. Alam, "Automated usability evaluation using machine learning: A systematic literature review," *IEEE Access*, vol. 11, pp. 45 321–45 342, 2023. DOI: 10.1109/ACCESS.2023.3274567
+
+[12] S. Barke, M. B. James, and N. Polikarpova, "Grounded Copilot: How Programmers Interact with Code-Generating Models," *Proc. ACM Program. Lang.*, vol. 7, no. OOPSLA1, pp. 1–27, 2023. DOI: 10.1145/3586030
+
+[13] P. Vaithilingam, T. Grossman, and G. Fitzmaurice, "Expectation vs. Experience: Evaluating the Usability of Code Generation Tools," in *Proc. CHI '22 Extended Abstracts*, 2022, pp. 1–6. DOI: 10.1145/3491102.3517445
+
+[14] J. D. Zamfirescu-Pereira, R. Y. Wong, B. Hartmann, and Q. Yang, "Why Johnny Can't Prompt: How Non-AI Experts Try (and Fail) to Design LLM Prompts," in *Proc. CHI '23*, 2023, pp. 1–21. DOI: 10.1145/3544548.3581388
+
+[15] A. J. Ko, J. Fogarty, and M. A. Hearst, "The State of the Art in Automated Usability Evaluation of User Interfaces," *ACM Comput. Surv.*, vol. 55, no. 3, pp. 1–35, 2023. DOI: 10.1145/3519024
