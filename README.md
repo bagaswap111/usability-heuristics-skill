@@ -29,18 +29,146 @@ Each platform has a variant for every AI tool:
 | PearAI | `.pearai/instructions.md` | `tools/pearai/{platform}/` |
 | Cody | `.cody/instructions.md` | `tools/cody/{platform}/` |
 
-## Usage
+## Installation
 
-1. Choose the **platform** (web/mobile/desktop/cli)
-2. Choose your **tool**
-3. Copy the file from `tools/{tool}/{platform}/` to your project root
-4. The AI agent will automatically read the usability evaluation rules
+### OpenCode (Built-in)
 
-Example — using Claude Code for a web app evaluation:
+Already in skill format — load by name:
 
 ```bash
-cp tools/claude-code/web/CLAUDE.md /path/to/project/CLAUDE.md
+# The skill is auto-discovered when placed under .agents/skills/
+# Load it in your opencode.json or via the skill command:
+skill load usability-heuristics
 ```
+
+Copy: `cp web/SKILL.md /project/.opencode/skills/usability-heuristics/SKILL.md`
+
+---
+
+### Claude Code
+
+Place `CLAUDE.md` at your project root:
+
+```bash
+cp tools/claude-code/web/CLAUDE.md /project/CLAUDE.md
+```
+
+Claude Code reads `CLAUDE.md` automatically — no config needed. Supported locations (highest priority first):
+1. `{project}/CLAUDE.md`
+2. `{project}/.claude/CLAUDE.md`
+3. `~/CLAUDE.md` (global, all projects)
+
+---
+
+### Cursor
+
+Place `.cursorrules` at your project root:
+
+```bash
+cp tools/cursor/web/.cursorrules /project/.cursorrules
+```
+
+For Cursor 0.45+ with rule scoping, use the `.cursor/rules/` directory:
+
+```bash
+cp tools/cursor/web/.cursorrules /project/.cursor/rules/usability-heuristics.mdc
+```
+
+---
+
+### Windsurf
+
+Place `.windsurfrules` at your project root:
+
+```bash
+cp tools/windsurf/web/.windsurfrules /project/.windsurfrules
+```
+
+Windsurf reads it automatically. For scoped rules, see Windsurf's `.windsurf/rules/` directory.
+
+---
+
+### GitHub Copilot
+
+Place `copilot-instructions.md` under `.github/`:
+
+```bash
+cp "tools/github-copilot/web/.github/copilot-instructions.md" "/project/.github/copilot-instructions.md"
+```
+
+Copilot reads it automatically when editing files matching the scope in the YAML frontmatter. No extension needed.
+
+---
+
+### Aider
+
+Place `CONVENTIONS.md` at your project root:
+
+```bash
+cp tools/aider/web/CONVENTIONS.md /project/CONVENTIONS.md
+```
+
+Aider reads conventions from `CONVENTIONS.md` automatically when present in the repo. Also supported: `.aider.conf.yml`.
+
+---
+
+### Continue
+
+Place `.continuerc.md` at your project root:
+
+```bash
+cp tools/continue/web/.continuerc.md /project/.continuerc.md
+```
+
+Continue reads `.continuerc.md` automatically. Also supported: `.continuerc.json` (JSON format).
+
+---
+
+### Codex CLI
+
+Place `CODEX.md` at your project root:
+
+```bash
+cp tools/codex-cli/web/CODEX.md /project/CODEX.md
+```
+
+Codex CLI reads `CODEX.md` automatically for project-level instructions.
+
+---
+
+### Augment Code
+
+Place `AUGMENT.md` at your project root:
+
+```bash
+cp tools/augment/web/AUGMENT.md /project/AUGMENT.md
+```
+
+Augment reads `AUGMENT.md` automatically. Also supported: `INSTRUCTIONS.md`.
+
+---
+
+### PearAI
+
+Place `instructions.md` under `.pearai/`:
+
+```bash
+cp "tools/pearai/web/.pearai/instructions.md" "/project/.pearai/instructions.md"
+```
+
+PearAI reads instructions from `.pearai/instructions.md` automatically.
+
+---
+
+### Cody (Sourcegraph)
+
+Place `instructions.md` under `.cody/`:
+
+```bash
+cp "tools/cody/web/.cody/instructions.md" "/project/.cody/instructions.md"
+```
+
+Cody reads `.cody/instructions.md` automatically. Also supported: `.cody/instructions/` directory for multiple files.
 
 ## 10 Heuristics
 
