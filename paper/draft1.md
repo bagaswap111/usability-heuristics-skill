@@ -2,6 +2,14 @@
 
 <!-- IEEE Conference/Journal Draft — July 2026 -->
 
+**Bagaskoro Saputro**  
+*School of Computer Science, BINUS University*  
+bagaskoro.saputro@binus.ac.id
+
+**Yashella Tirana**  
+*Digital Business School, BINUS University*  
+yashella.tirana@binus.ac.id
+
 ---
 
 ## Abstract

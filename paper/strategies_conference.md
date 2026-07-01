@@ -1,6 +1,8 @@
 # Conference Publication Strategy — 4-6 Page IEEE Paper
 
-**Paper:** A Multi-Platform Usability Heuristic Evaluation Framework for AI-Assisted Development
+**Title:** A Multi-Platform Usability Heuristic Evaluation Framework for AI-Assisted Development
+
+**Authors:** Bagaskoro Saputro (BINUS University, bagaskoro.saputro@binus.ac.id), Yashella Tirana (BINUS University, yashella.tirana@binus.ac.id)
 
 **Target Format:** IEEE Conference (double-column, 4-6 pages)
 
